@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">qapital</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_debt">Debt</string>
+    <string name="txt_add_transaction">Add\nTransaction</string>
+    <string name="btn_expense">Expense</string>
+    <string name="btn_income">Income</string>
+    <string name="edt_transaction_amount">Amount</string>
+    <string name="edt_transaction_name">Name</string>
+    <string name="edt_transaction_note">Enter your note here</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_update">Update</string>
+    <string name="txt_debt_details">Debt Details</string>
+    <string name="txt_transaction_date_details">01 January 2002</string>
+    <string name="txt_transaction_type">Debt</string>
+    <string name="txt_transaction_amount">Amount : </string>
+    <string name="transaction_amount_details">99999.99</string>
+    <string name="txt_transaction_information">Transaction Information</string>
+    <string name="edt_borrowed_date">Borrowed Date</string>
+    <string name="edt_return_date">Return Date</string>
+    <string name="btn_paid">Paid</string>
+    <string name="btn_back">Click this buttton to go back</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_edit">Edit details</string>
+</resources>
