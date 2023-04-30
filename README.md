@@ -5,5 +5,5 @@
 ### Member 3 - IT21489914 - Wijedasa H.A.S.A (SithumAsitha)
 ### Member 4 - IT21329456 - Subawickrama N.S.P(SujithraSubawickrama)
 
-Brief Description of Project -
-Technologies used - Kotlin, Android Studio, Firebase
+#### Brief Description of Project -
+#### Technologies used - Kotlin, Android Studio, Firebase
