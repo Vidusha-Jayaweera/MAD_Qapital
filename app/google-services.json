@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "13698923268",
+    "project_id": "qapital-afdcb",
+    "storage_bucket": "qapital-afdcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13698923268:android:3e3217ed4c18be66596e51",
+        "android_client_info": {
+          "package_name": "com.example.qapital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13698923268-cjpor4dnitgrujr4hntur3qj67sl1j59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRbjVbo_1dbFKwlK6xnpXwTDxzQaNFdms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13698923268-cjpor4dnitgrujr4hntur3qj67sl1j59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13698923268:android:081610737a7763d3596e51",
+        "android_client_info": {
+          "package_name": "me.lakinduw.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13698923268-cjpor4dnitgrujr4hntur3qj67sl1j59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRbjVbo_1dbFKwlK6xnpXwTDxzQaNFdms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13698923268-cjpor4dnitgrujr4hntur3qj67sl1j59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

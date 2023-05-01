@@ -13,6 +13,19 @@
         android:theme="@style/Theme.Qapital"
         tools:targetApi="31">
         <activity
+            android:name=".ExpenseDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseInsertionActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".DebtUpdateActivity"
             android:exported="false">
             <meta-data

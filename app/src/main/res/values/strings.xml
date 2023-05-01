@@ -23,4 +23,16 @@
     <string name="btn_back">Click this buttton to go back</string>
     <string name="btn_delete">Delete</string>
     <string name="btn_edit">Edit details</string>
+    <string name="edt_transaction_title">Title</string>
+    <string name="category_food">Food</string>
+    <string name="category_beverage">Beverages</string>
+    <string name="category_transportation">Transportation</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_education">Education</string>
+    <string name="category_bills">Bills</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_communication">Communication</string>
+    <string name="edt_expense_date">Date</string>
+    <string name="txt_expense_details">Expense Details</string>
+    <string name="edt_expense_category">Category</string>
 </resources>
