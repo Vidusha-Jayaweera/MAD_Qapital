@@ -68,7 +68,7 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/dateUpdate"
+                android:id="@+id/borrowedDateUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/categoryTIL"
@@ -96,7 +96,7 @@
                 android:id="@+id/returnDateUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/dateUpdate"
+                android:layout_below="@+id/borrowedDateUpdate"
                 android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
                 android:drawablePadding="8dp"
                 android:ems="10"
