@@ -13,22 +13,9 @@
     <color name="primary_ice">#5E91F2</color>
     <color name="primary_lite">#92B8FF</color>
 
-    <color name="Secondry">#ffb703</color>
-
-    <color name="orangePrimary">#ff9f1c</color>
-    <color name="toscaSecondary">#2ec4b6</color>
-    <color name="orangeSecondary">#ffbf69</color>
-    <color name="toscaWhite">#cbf3f0</color>
-    <color name="greenIncome">#489E4C</color>
-    <color name="redExpense">#D11818</color>
-    <color name="toscaDarker">#03A5A3</color>
-
-    <color name="defaultButton">#E1E6E9</color>
+    <color name="defaultButton">#E1E6E9 </color>.
     <color name="Expense">#FA897B</color>
     <color name="Income">#DDE6A5</color>
-    <color name="Debts">#FED436</color>
+    <color name="Debts">#FFDD94</color>
 
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
 </resources>
