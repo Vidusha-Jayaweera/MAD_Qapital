@@ -126,7 +126,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/amount"
+                    android:id="@+id/etDebtAmount"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/typeRadioGroup"
@@ -150,10 +150,10 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/name"
+                    android:id="@+id/etDebtName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/amount"
+                    android:layout_below="@id/etDebtAmount"
                     android:drawableLeft="@drawable/ic_baseline_title_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
@@ -174,10 +174,10 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/borrowedDate"
+                    android:id="@+id/etDebtBorrowedDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/name"
+                    android:layout_below="@+id/etDebtName"
                     android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
@@ -199,10 +199,10 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/returnDate"
+                    android:id="@+id/etDebtReturnDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/borrowedDate"
+                    android:layout_below="@+id/etDebtBorrowedDate"
                     android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
@@ -224,10 +224,10 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/note"
+                    android:id="@+id/etDebtNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/returnDate"
+                    android:layout_below="@+id/etDebtReturnDate"
                     android:drawableLeft="@drawable/ic_baseline_notes_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
