@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExpenseDetailsActivity"
+    tools:context=".activities.ExpenseDetailsActivity"
     android:background="@color/orangePrimary">
 
     <RelativeLayout
@@ -33,7 +33,7 @@
                 android:contentDescription="@string/btn_back" />
 
             <ImageButton
-                android:id="@+id/deleteData"
+                android:id="@+id/deleteExpenseData"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="right"
@@ -42,7 +42,7 @@
                 android:contentDescription="@string/btn_delete" />
 
             <ImageButton
-                android:id="@+id/updateData"
+                android:id="@+id/updateExpenseData"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="right"
@@ -103,12 +103,11 @@
             android:layout_marginBottom="5dp">
 
             <TextView
-                android:id="@+id/tvDateDetails"
+                android:id="@+id/tvExpenseDateDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center_vertical"
-                android:text="@string/txt_transaction_date_details"
                 android:textColor="#606060"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -117,7 +116,7 @@
                 android:id="@+id/tvTypeDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDateDetails"
+                android:layout_below="@+id/tvExpenseDateDetails"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="start"
@@ -138,14 +137,13 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/tvAmountDetails"
+                android:id="@+id/tvExpenseAmountDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/amountTitle"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="start"
-                android:text="@string/transaction_amount_details"
                 android:textColor="#515151"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -185,7 +183,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvTitleDetails"
+            android:id="@+id/tvExpenseTitleDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleInformation"
@@ -194,21 +192,19 @@
             android:drawablePadding="25dp"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center_vertical"
-            android:text="@string/edt_transaction_name"
             android:textColor="#606060"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tvCategoryDetails"
+            android:id="@+id/tvExpenseCategoryDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTitleDetails"
+            android:layout_below="@id/tvExpenseTitleDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_format_list_bulleted_36"
             android:drawablePadding="25dp"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center_vertical"
-            android:text="@string/edt_expense_category"
             android:textColor="#606060"
             android:textSize="20sp" />
 
@@ -216,18 +212,18 @@
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvCategoryDetails"
+            android:layout_below="@id/tvExpenseCategoryDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_notes_24"
             android:drawablePadding="25dp"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center_vertical"
-            android:text="Note :"
+            android:text="Note : "
             android:textColor="#606060"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tvNoteDetails"
+            android:id="@+id/tvExpenseNoteDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/noteTitle"

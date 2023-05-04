@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExpenseInsertionActivity">
+    tools:context=".activities.ExpenseInsertionActivity">
 
     <LinearLayout
         android:id="@+id/toolbarLinear"
@@ -128,7 +128,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/amount"
+                    android:id="@+id/etExpenseAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/typeRadioGroup"
@@ -152,7 +152,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/title"
+                    android:id="@+id/etExpenseTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/amount"
@@ -168,21 +168,24 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/categoryTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@id/titleTIL"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp">
 
-                <AutoCompleteTextView
-                    android:id="@+id/category"
+                <EditText
+                    android:id="@+id/etExpenseCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
+                    android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
                     android:drawablePadding="8dp"
-                    android:hint="Type"
-                    android:inputType="none" />
+                    android:ems="10"
+                    android:hint="Category"
+                    android:textColor="@color/black"
+                    android:inputType="text"
+                    tools:ignore="SpeakableTextPresentCheck"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -195,17 +198,15 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/date"
+                    android:id="@+id/etExpenseDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/categoryTIL"
                     android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:focusable="false"
-                    android:hint=""
+                    android:hint="Date"
                     android:inputType="date"
-                    android:text="Today"
                     android:textColor="#717171"
                     android:textColorHint="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -220,7 +221,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/note"
+                    android:id="@+id/etExpenseDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/amount"
@@ -235,7 +236,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/saveButton"
+                android:id="@+id/expenseSaveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_below="@+id/noteTIL"
