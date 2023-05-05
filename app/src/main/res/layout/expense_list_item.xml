@@ -6,8 +6,8 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
     android:layout_margin="8dp"
-    android:background="@color/Expense">
-    
+    app:cardBackgroundColor="@color/Expense">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,14 +15,14 @@
         android:padding="16dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:background="@color/Expense">
+        >
         
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@color/Expense">
+            >
             
             <TextView
                 android:id="@+id/tvExpenseTitle"

@@ -208,7 +208,8 @@
                     android:hint="Date"
                     android:inputType="date"
                     android:textColor="#717171"
-                    android:textColorHint="@color/black" />
+                    android:textColorHint="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
