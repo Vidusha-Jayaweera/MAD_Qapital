@@ -1,9 +1,10 @@
-package com.example.qapital
+package com.example.qapital.activities
 
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import com.example.qapital.R
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DebtDetailsActivity"
+    tools:context=".activities.DebtDetailsActivity"
     android:background="@color/orangePrimary">
 
     <RelativeLayout
@@ -103,7 +103,7 @@
             android:layout_marginBottom="5dp">
 
             <TextView
-                android:id="@+id/tvDateDetails"
+                android:id="@+id/tvBorrowedDateDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsmedium"
@@ -114,14 +114,14 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvTypeDetails"
+                android:id="@+id/tvPayStatusDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDateDetails"
+                android:layout_below="@+id/tvBorrowedDateDetails"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="start"
-                android:text="@string/txt_transaction_type"
+                android:text="Not paid"
                 android:textColor="#474747"
                 android:textSize="15sp" />
 
@@ -129,7 +129,7 @@
                 android:id="@+id/amountTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvTypeDetails"
+                android:layout_below="@id/tvPayStatusDetails"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppinsmedium"
@@ -185,7 +185,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvTitleDetails"
+            android:id="@+id/tvNameDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleInformation"
@@ -199,10 +199,10 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tvCategoryDetails"
+            android:id="@+id/tvReturnDateDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTitleDetails"
+            android:layout_below="@id/tvNameDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_format_list_bulleted_36"
             android:drawablePadding="25dp"
@@ -216,7 +216,7 @@
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvCategoryDetails"
+            android:layout_below="@id/tvReturnDateDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_notes_24"
             android:drawablePadding="25dp"
@@ -241,7 +241,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/approveButton"
+        android:id="@+id/paidButton"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -253,5 +253,15 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         app:cornerRadius="20dp" />
+
+    <ImageView
+        android:id="@+id/paidIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/done_svgrepo_com"
+        tools:visibility="gone" />
 
 </RelativeLayout >
