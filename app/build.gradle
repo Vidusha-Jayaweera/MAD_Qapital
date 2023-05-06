@@ -52,4 +52,7 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    implementation files('libs\\poi-3.7.jar')
+    testImplementation 'org.mockito:mockito-core:3.12.4'
 }

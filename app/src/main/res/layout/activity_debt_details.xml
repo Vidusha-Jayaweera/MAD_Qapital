@@ -33,7 +33,7 @@
                 android:contentDescription="@string/btn_back" />
 
             <ImageButton
-                android:id="@+id/deleteData"
+                android:id="@+id/btnDeleteDebt"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="right"
@@ -42,7 +42,7 @@
                 android:contentDescription="@string/btn_delete" />
 
             <ImageButton
-                android:id="@+id/updateData"
+                android:id="@+id/btnUpdateDebt"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="right"

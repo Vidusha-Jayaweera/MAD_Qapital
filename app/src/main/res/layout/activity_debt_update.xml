@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.DebtUpdateActivity">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -20,7 +19,7 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/amountUpdate"
+                android:id="@+id/etDebtAmountUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/typeRadioGroup"
@@ -44,7 +43,7 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/titleUpdate"
+                android:id="@+id/etDebtNameUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/etDebtAmount"
@@ -68,7 +67,7 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/borrowedDateUpdate"
+                android:id="@+id/etBorrowedDateUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/categoryTIL"
@@ -93,10 +92,10 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/returnDateUpdate"
+                android:id="@+id/etReturnDateUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/borrowedDateUpdate"
+                android:layout_below="@+id/etBorrowedDateUpdate"
                 android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
                 android:drawablePadding="8dp"
                 android:ems="10"
@@ -118,7 +117,7 @@
             android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/noteUpdate"
+                android:id="@+id/etDebtNoteUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/etDebtAmount"

@@ -16,19 +16,19 @@ import java.util.*
 
 class DebtInsertionActivity : AppCompatActivity() {
 
-    private lateinit var etDebtAmount : EditText
-    private lateinit var etDebtName : EditText
-    private lateinit var etDebtBorrowedDate: EditText
-    private lateinit var etDebtReturnDate: EditText
+    lateinit var etDebtAmount : EditText
+    lateinit var etDebtName : EditText
+    lateinit var etDebtBorrowedDate: EditText
+    lateinit var etDebtReturnDate: EditText
     private var borrowedDate: Long = 0
     private var returnDate: Long = 0
     private var date: Long = 0
     private var invertedBorrowedDate: Long = 0
     private var invertedReturnDate: Long = 0
     private var debtAmount: Double = 0.0
-    private lateinit var etDebtNote : EditText
+    lateinit var etDebtNote : EditText
     private lateinit var btnDebtInsertData : Button
-    private var payStatus: String = "Not Paid"
+    private var payStatus: String = "Not paid"
 
     private lateinit var dbRef: DatabaseReference
 
@@ -72,7 +72,7 @@ class DebtInsertionActivity : AppCompatActivity() {
         dbRef = FirebaseDatabase.getInstance().getReference("Debts")
     }
 
-    private fun clickDatePicker(editText: EditText) {
+    fun clickDatePicker(editText: EditText) {
         val myCalendar = Calendar.getInstance()
         val year = myCalendar.get(Calendar.YEAR)
         val month = myCalendar.get(Calendar.MONTH)
@@ -100,7 +100,7 @@ class DebtInsertionActivity : AppCompatActivity() {
         dpd.show()
     }
 
-    private fun saveDebtData(){
+    fun saveDebtData(){
         //getting values
         val debtAmountEt = etDebtAmount.text.toString()
         val debtName = etDebtName.text.toString()
