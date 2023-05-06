@@ -1,52 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ExpenseFetchingActivity"
-    android:background="#03DAC5">
+    tools:context=".activities.ExpenseFetchingActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvExpenses"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddExpense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/expense_list_item" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvLoadingExpenseData"
-        android:layout_width="wrap_content"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <RelativeLayout
+                android:id="@+id/up"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#6200EE"
+                app:layout_collapseMode="parallax">
+
+                <Toolbar
+                    android:id="@+id/topBarLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="0dp"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp">
+
+                </Toolbar>
+
+                <TextView
+                    android:id="@+id/expenseListTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginBottom="25dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Expense List"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_toEndOf="@+id/expenseListTV"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="35dp"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/exportButton"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:backgroundTint="#00FFFFFF"
+                        android:src="@drawable/ic_file_export_svgrepo_com" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Loading data..."
-        android:textSize="28sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@drawable/bg_rounded_layout">
 
-    <ImageButton
-        android:id="@+id/btnAddExpense"
-        android:layout_width="69dp"
-        android:layout_height="61dp"
-        android:background="@drawable/circle_button_background"
-        android:backgroundTint="#3700B3"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="500dp"
-        app:tint="@android:color/white"
-        app:layout_constraintHorizontal_bias="0.5"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:paddingHorizontal="5dp"
+            android:paddingTop="7dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pullIcon"
+                android:layout_width="50dp"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="5dp"
+                    android:background="#E1E1E1" />
+            </androidx.cardview.widget.CardView>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/pullIcon"
+                android:layout_margin="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/shimmer_placeholder_layout" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <ImageView
+                android:id="@+id/noDataImage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/pullIcon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:src="@drawable/ic_no_data_amico"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvNoDataTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/noDataImage"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:text="No Transaction Yet!"
+                android:textColor="#191919"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvNoData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNoDataTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:text="You can add transaction below"
+                android:textColor="#B3B3B3"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/visibilityNoData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNoDataTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center"
+                android:text="There is no All Type transaction\nat This Month"
+                android:textColor="#B3B3B3"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:layout_below="@id/pullIcon">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvExpenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/expense_list_item" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -54,4 +54,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.5.0')
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    //Shimmer Effect Dependencies
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
 }

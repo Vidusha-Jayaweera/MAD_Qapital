@@ -15,7 +15,6 @@ import com.google.firebase.database.*
 class ExpenseFetchingActivity : AppCompatActivity() {
 
     private lateinit var expenseRecyclerView: RecyclerView
-    private lateinit var tvExpenseLoadingData: TextView
     private lateinit var expenseList:ArrayList<ExpenseModel>
     private lateinit var dbRef: DatabaseReference
 
@@ -26,7 +25,6 @@ class ExpenseFetchingActivity : AppCompatActivity() {
         expenseRecyclerView = findViewById(R.id.rvExpenses)
         expenseRecyclerView.layoutManager = LinearLayoutManager(this)
         expenseRecyclerView.setHasFixedSize(true)
-        tvExpenseLoadingData = findViewById(R.id.tvLoadingExpenseData)
 
         expenseList = arrayListOf<ExpenseModel>()
 
@@ -35,7 +33,6 @@ class ExpenseFetchingActivity : AppCompatActivity() {
 
     private fun getExpensesData(){
         expenseRecyclerView.visibility = View.GONE
-        tvExpenseLoadingData.visibility = View.VISIBLE
 
         dbRef = FirebaseDatabase.getInstance().getReference("Expenses")
         dbRef.addValueEventListener(object :ValueEventListener{
@@ -68,7 +65,6 @@ class ExpenseFetchingActivity : AppCompatActivity() {
 
 
                     expenseRecyclerView.visibility = View.VISIBLE
-                    tvExpenseLoadingData.visibility = View.GONE
                 }
             }
 
