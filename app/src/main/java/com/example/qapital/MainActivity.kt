@@ -1,8 +1,12 @@
 package com.example.qapital
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.os.Build
 import android.widget.Button
 
 
@@ -23,5 +27,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, signUpActivity::class.java)
             startActivity(intent)
         }
+
     }
 }

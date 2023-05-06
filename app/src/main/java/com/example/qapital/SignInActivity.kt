@@ -51,7 +51,8 @@ class SignInActivity : AppCompatActivity() {
                         Log.d(TAG, "signInWithEmail:success")
                         val user = firebaseAuth.currentUser
                         Toast.makeText(this, "Welcome ${user?.email}", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, HomeActivity::class.java))
+                        val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                        startActivity(intent)
                         finish()
                     } else {
                         // If sign in fails, display a message to the user.
