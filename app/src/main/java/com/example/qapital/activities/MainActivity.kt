@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var expenseButton: Button
+    private lateinit var incomeButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.my_button)
         button.setOnClickListener {
-            val intent = Intent(this, ExpenseInsertionActivity::class.java)
+            val intent = Intent(this, IncomeInsertionActivity::class.java)
             startActivity(intent)
         }
-        expenseButton = findViewById<Button>(R.id.expenseButton)
+        incomeButton = findViewById<Button>(R.id.incomeButton)
 
-        expenseButton.setOnClickListener{
-            val intent = Intent(this, ExpenseFetchingActivity::class.java)
+        incomeButton.setOnClickListener{
+            val intent = Intent(this, IncomeFetchingActivity::class.java)
             startActivity(intent)
         }
 

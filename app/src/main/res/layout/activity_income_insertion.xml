@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ExpenseInsertionActivity">
+    android:background="@drawable/purple"
+    tools:context=".activities.IncomeInsertionActivity">
 
     <LinearLayout
         android:id="@+id/toolbarLinear"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:background="@color/Expense"
-        >
+        android:orientation="vertical">
 
         <Toolbar
             android:id="@+id/toolbar"
@@ -30,23 +29,23 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="15dp"
-                android:background="@drawable/ic_baseline_clear_24"
+                android:background="@drawable/baseline_clear_24"
                 android:contentDescription="@string/edt_transaction_note"
-                tools:ignore="TouchTargetSizeCheck"/>
+                tools:ignore="TouchTargetSizeCheck" />
 
         </Toolbar>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppinsmedium"
-            android:textStyle="bold"
             android:layout_marginStart="30dp"
             android:layout_marginTop="0dp"
+            android:fontFamily="@font/poppinsmedium"
             android:paddingTop="5dp"
             android:text="Add\nTransaction"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -73,33 +72,33 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/expenseButton"
-                    android:backgroundTint="@color/Expense"
+                    android:id="@+id/IncomeButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/toscaWhite"
                     android:gravity="center"
                     android:paddingHorizontal="16dp"
-                    android:text="Expense"
-                    android:textColor="@color/black"
+                    android:text="@string/incomes"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     app:cornerRadius="16dp" />
 
                 <!--android:background="@drawable/radio_not_selected"-->
 
                 <Button
                     android:id="@+id/incomeButton"
-                    android:backgroundTint="@color/defaultButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/defaultButton"
                     android:paddingHorizontal="16dp"
-                    android:text="Income"
-                    android:textColor="@color/black"
+                    android:text="@string/expenses"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     app:cornerRadius="32dp" />
 
                 <Button
@@ -128,7 +127,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/etExpenseAmount"
+                    android:id="@+id/etIncomeAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/typeRadioGroup"
@@ -152,7 +151,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/etExpenseTitle"
+                    android:id="@+id/etIncomeTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/amount"
@@ -176,13 +175,13 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/etExpenseCategory"
+                    android:id="@+id/etIncomeType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="Category"
+                    android:hint="Type"
                     android:textColor="@color/black"
                     android:inputType="text"
                     tools:ignore="SpeakableTextPresentCheck"/>
@@ -198,7 +197,7 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/etExpenseDate"
+                    android:id="@+id/etIncomeDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/categoryTIL"
@@ -208,7 +207,8 @@
                     android:hint="Date"
                     android:inputType="date"
                     android:textColor="#717171"
-                    android:textColorHint="@color/black" />
+                    android:textColorHint="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -221,14 +221,14 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/etExpenseDescription"
+                    android:id="@+id/etIncomeNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/amount"
                     android:drawableLeft="@drawable/ic_baseline_notes_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="Description"
+                    android:hint="Note"
                     android:inputType="textMultiLine"
                     android:textColor="@color/black"
                     tools:ignore="SpeakableTextPresentCheck"
@@ -236,16 +236,16 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/expenseSaveButton"
+                android:id="@+id/IncomeSaveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_below="@+id/noteTIL"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/Expense"
+                android:backgroundTint="@color/toscaSecondary"
                 android:paddingHorizontal="30dp"
                 android:text="Save"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 app:cornerRadius="20dp" />
 

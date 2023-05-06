@@ -35,4 +35,10 @@
     <string name="edt_expense_date">Date</string>
     <string name="txt_expense_details">Expense Details</string>
     <string name="edt_expense_category">Category</string>
+    <string name="details">Income details</string>
+    <string name="detail">Income details</string>
+    <string name="income">Income</string>
+    <string name="incomes">Income</string>
+    <string name="expense">expense</string>
+    <string name="expenses">Expense</string>
 </resources>

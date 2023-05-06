@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/purple"
     tools:context=".activities.MainActivity">
 
     <Button
@@ -19,14 +20,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/expenseButton"
+        android:id="@+id/incomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
         android:layout_marginTop="213dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="176dp"
-        android:text="Expenses"
+        android:text="Incomes"
         app:layout_constraintBottom_toTopOf="@+id/my_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

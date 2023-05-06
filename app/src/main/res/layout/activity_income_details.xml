@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ExpenseDetailsActivity"
-    android:background="@color/orangePrimary">
+    android:background="@drawable/purple"
+    tools:context=".activities.IncomeDetailsActivity">
 
     <RelativeLayout
         android:id="@+id/transactionDetailsTitle"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:background="@color/Expense">
+        android:layout_height="270dp">
 
         <Toolbar
             android:id="@+id/toolbar"
@@ -29,25 +28,25 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="14dp"
-                android:background="@drawable/ic_baseline_clear_24"
+                android:background="@drawable/baseline_clear_24"
                 android:contentDescription="@string/btn_back" />
 
             <ImageButton
-                android:id="@+id/deleteExpenseData"
+                android:id="@+id/deleteIncomeData"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/ic_baseline_delete_24"
+                android:background="@drawable/baseline_delete_24"
                 android:contentDescription="@string/btn_delete" />
 
             <ImageButton
-                android:id="@+id/updateExpenseData"
+                android:id="@+id/updateIncomeData"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/ic_baseline_edit_24"
+                android:background="@drawable/baseline_edit_24"
                 android:contentDescription="@string/btn_edit" />
 
         </Toolbar>
@@ -59,14 +58,15 @@
             android:layout_below="@id/toolbar"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="31dp"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/txt_expense_details"
-            android:textColor="@color/white"
+            android:textColor="@color/design_default_color_on_secondary"
             android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="@string/detail" />
 
     </RelativeLayout>
 
@@ -93,7 +93,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
-            android:src="@drawable/ic_calc_note_svgrepo_com" />
+            android:src="@drawable/profits_graph_svgrepo_com" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -103,7 +103,7 @@
             android:layout_marginBottom="5dp">
 
             <TextView
-                android:id="@+id/tvExpenseDateDetails"
+                android:id="@+id/tvIncomeDateDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsmedium"
@@ -113,22 +113,23 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvTypeDetails"
+                android:id="@+id/tvIncomeTypeDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvExpenseDateDetails"
+                android:layout_below="@+id/tvIncomeDateDetails"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="start"
-                android:text="Expense"
+                android:text="Income"
                 android:textColor="#474747"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                tools:text="@string/income" />
 
             <TextView
                 android:id="@+id/amountTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvTypeDetails"
+                android:layout_below="@id/tvIncomeTypeDetails"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppinsmedium"
@@ -137,7 +138,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/tvExpenseAmountDetails"
+                android:id="@+id/tvIncomeAmountDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/amountTitle"
@@ -161,7 +162,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <RelativeLayout
-        android:id="@+id/information"
+        android:id="@+id/Incomeinformation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/transactionDetailsTitle"
@@ -171,7 +172,7 @@
         android:paddingTop="80dp">
 
         <TextView
-            android:id="@+id/titleInformation"
+            android:id="@+id/titleIncomeInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -183,10 +184,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvExpenseTitleDetails"
+            android:id="@+id/tvIncomeTitleDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleInformation"
+            android:layout_below="@id/titleIncomeInformation"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_title_36"
             android:drawablePadding="25dp"
@@ -196,10 +197,10 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tvExpenseCategoryDetails"
+            android:id="@+id/tvIncomeCategoryDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvExpenseTitleDetails"
+            android:layout_below="@id/tvIncomeTitleDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_format_list_bulleted_36"
             android:drawablePadding="25dp"
@@ -209,10 +210,10 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/noteTitle"
+            android:id="@+id/IncomenoteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvExpenseCategoryDetails"
+            android:layout_below="@id/tvIncomeCategoryDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_notes_24"
             android:drawablePadding="25dp"
@@ -223,17 +224,16 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tvExpenseNoteDetails"
+            android:id="@+id/tvIncomeNoteDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/noteTitle"
+            android:layout_below="@id/IncomenoteTitle"
             android:layout_marginLeft="59dp"
             android:drawablePadding="25dp"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center_vertical"
-            android:text="Notes here..."
             android:textColor="#939393"
             android:textSize="18sp" />
     </RelativeLayout>
 
-</RelativeLayout >
+</RelativeLayout>
