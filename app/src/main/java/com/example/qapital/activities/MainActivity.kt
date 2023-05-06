@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.my_button)
         button.setOnClickListener {
-            val intent = Intent(this, DebtListActivity::class.java)
+            val intent = Intent(this, DebtInsertionActivity::class.java)
             startActivity(intent)
         }
     }

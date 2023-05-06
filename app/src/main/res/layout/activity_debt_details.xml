@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DebtDetailsActivity"
-    android:background="@color/orangePrimary">
+    tools:context=".activities.DebtDetailsActivity">
 
     <RelativeLayout
         android:id="@+id/transactionDetailsTitle"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:background="@color/Debts">
+        android:background="@drawable/purple_pink_gradient_5">
 
         <Toolbar
             android:id="@+id/toolbar"
@@ -168,7 +167,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/transactionDetailsTitle"
         android:layout_marginTop="0dp"
-        android:background="@color/white"
+        android:background="@drawable/purple_pink_gradient_10"
         android:paddingHorizontal="20dp"
         android:paddingTop="80dp">
 
