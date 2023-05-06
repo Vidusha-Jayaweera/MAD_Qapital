@@ -11,7 +11,7 @@
         android:id="@+id/transactionDetailsTitle"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:background="@color/Expense">
+        android:background="#6200EE">
 
         <Toolbar
             android:id="@+id/toolbar"

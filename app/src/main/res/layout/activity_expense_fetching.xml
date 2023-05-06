@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ExpenseFetchingActivity">
+    tools:context=".activities.ExpenseFetchingActivity"
+    android:background="#03DAC5">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExpenses"
@@ -39,12 +40,13 @@
         android:layout_width="69dp"
         android:layout_height="61dp"
         android:background="@drawable/circle_button_background"
-        android:backgroundTint="@color/redExpense"
+        android:backgroundTint="#3700B3"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="500dp"
         app:tint="@android:color/white"
+        app:layout_constraintHorizontal_bias="0.5"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -139,7 +139,7 @@
                 android:layout_below="@+id/noteTIL"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/Expense"
+                android:backgroundTint="#03DAC5"
                 android:paddingHorizontal="30dp"
                 android:text="Update"
                 android:textColor="@color/white"
