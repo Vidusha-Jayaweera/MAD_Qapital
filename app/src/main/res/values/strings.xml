@@ -16,7 +16,7 @@
     <string name="txt_transaction_type">Debt</string>
     <string name="txt_transaction_amount">Amount : </string>
     <string name="transaction_amount_details">99999.99</string>
-    <string name="txt_transaction_information">Transaction Information</string>
+    <string name="txt_transaction_information">Debt Information</string>
     <string name="edt_borrowed_date">Borrowed Date</string>
     <string name="edt_return_date">Return Date</string>
     <string name="btn_paid">Paid</string>

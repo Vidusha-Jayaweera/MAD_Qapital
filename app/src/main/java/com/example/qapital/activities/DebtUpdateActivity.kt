@@ -1,8 +1,7 @@
-package com.example.qapital.activities
+package com.example.qapital
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.qapital.R
 
 class DebtUpdateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

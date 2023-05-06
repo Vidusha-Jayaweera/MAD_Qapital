@@ -89,11 +89,11 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
-            android:src="@drawable/ic_calc_note_svgrepo_com" />
+            android:src="@drawable/loan_svgrepo_com" />
 
         <RelativeLayout
             android:layout_width="match_parent"
