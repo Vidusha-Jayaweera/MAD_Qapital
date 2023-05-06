@@ -30,4 +30,12 @@
     <string name="Home">Home</string>
     <string name="error_empty_fields">Please enter both email and password.</string>
     <string name="error_invalid_email">Please enter a valid email address.</string>
+    <string name="welcome_message" />
+    <string name="Setting">Setting</string>
+    <string name="email">vidurangalakindu@gmail.com</string>
+    <string name="Settings">Settings</string>
+    <string name="signout">Sign Out</string>
+    <string name="Incomes">Incomes</string>
+    <string name="Expenses">Expenses</string>
+    <string name="Debits">Debits</string>
 </resources>
