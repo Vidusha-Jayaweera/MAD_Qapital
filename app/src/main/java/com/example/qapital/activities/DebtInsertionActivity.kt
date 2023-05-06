@@ -1,12 +1,14 @@
-package com.example.qapital
+package com.example.qapital.activities
 
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
-import com.example.qapital.model.DebtModel
+import com.example.qapital.R
+import com.example.qapital.models.DebtModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -14,15 +16,19 @@ import java.util.*
 
 class DebtInsertionActivity : AppCompatActivity() {
 
-    private lateinit var etDebtAmount : EditText
-    private lateinit var etDebtName : EditText
-    private lateinit var etDebtBorrowedDate: EditText
-    private lateinit var etDebtReturnDate: EditText
+    lateinit var etDebtAmount : EditText
+    lateinit var etDebtName : EditText
+    lateinit var etDebtBorrowedDate: EditText
+    lateinit var etDebtReturnDate: EditText
     private var borrowedDate: Long = 0
     private var returnDate: Long = 0
     private var date: Long = 0
-    private lateinit var etDebtNote : EditText
+    private var invertedBorrowedDate: Long = 0
+    private var invertedReturnDate: Long = 0
+    private var debtAmount: Double = 0.0
+    lateinit var etDebtNote : EditText
     private lateinit var btnDebtInsertData : Button
+    private var payStatus: String = "Not paid"
 
     private lateinit var dbRef: DatabaseReference
 
@@ -30,8 +36,15 @@ class DebtInsertionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_debt_insertion)
 
+        //---back button---
+        val backButton: ImageButton = findViewById(R.id.backBtn)
+        backButton.setOnClickListener {
+            finish()
+        }
+
         initItem()
 
+        //date picker
         val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
         val currentDate = sdf.parse(sdf.format(System.currentTimeMillis())) //take current date
         borrowedDate = currentDate!!.time //initialized date value to current date as the default value
@@ -59,7 +72,7 @@ class DebtInsertionActivity : AppCompatActivity() {
         dbRef = FirebaseDatabase.getInstance().getReference("Debts")
     }
 
-    private fun clickDatePicker(editText: EditText) {
+    fun clickDatePicker(editText: EditText) {
         val myCalendar = Calendar.getInstance()
         val year = myCalendar.get(Calendar.YEAR)
         val month = myCalendar.get(Calendar.MONTH)
@@ -87,17 +100,18 @@ class DebtInsertionActivity : AppCompatActivity() {
         dpd.show()
     }
 
-    private fun saveDebtData(){
+    fun saveDebtData(){
         //getting values
-        val debtAmount = etDebtAmount.text.toString()
+        val debtAmountEt = etDebtAmount.text.toString()
         val debtName = etDebtName.text.toString()
         val debtNote = etDebtNote.text.toString()
 
-        if(debtAmount.isEmpty()){
+        if(debtAmountEt.isEmpty()){
             etDebtAmount.error = "Please enter debt amount"
-        }
-        if(debtName.isEmpty()){
+        }else if(debtName.isEmpty()){
             etDebtName.error = "Please enter creditor name"
+        }else{
+            debtAmount = etDebtAmount.text.toString().toDouble() //convert to double type
         }
 //        if(debtBorrowedDate.isEmpty()){
 //            etDebtBorrowedDate.error = "Please enter debt borrowed date"
@@ -107,8 +121,10 @@ class DebtInsertionActivity : AppCompatActivity() {
 //        }
 
         val debtId = dbRef.push().key!!
-
-        val debt = DebtModel(debtId, debtAmount, debtName, borrowedDate, returnDate, debtNote)
+        //convert millis value to negative, so it can be sort as descending order
+        invertedBorrowedDate = borrowedDate * -1
+        invertedReturnDate = returnDate * -1
+        val debt = DebtModel(debtId, debtAmount, debtName, borrowedDate, returnDate, debtNote, invertedBorrowedDate, invertedReturnDate, payStatus)
 
         dbRef.child(debtId).setValue(debt)
             .addOnCompleteListener {

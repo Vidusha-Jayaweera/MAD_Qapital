@@ -1,9 +1,10 @@
-package com.example.qapital
+package com.example.qapital.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.qapital.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.my_button)
         button.setOnClickListener {
-            val intent = Intent(this, DebtInsertionActivity::class.java)
+            val intent = Intent(this, DebtListActivity::class.java)
             startActivity(intent)
         }
     }
