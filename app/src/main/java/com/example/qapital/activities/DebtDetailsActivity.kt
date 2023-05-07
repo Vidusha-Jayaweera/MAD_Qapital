@@ -15,18 +15,22 @@ import java.util.*
 
 class DebtDetailsActivity : AppCompatActivity() {
 
-    private lateinit var tvAmountDetails: TextView
+    lateinit var tvAmountDetails: TextView
     private lateinit var tvPayStatusDetails: TextView
-    private lateinit var tvNameDetails: TextView
-    private lateinit var tvBorrowedDateDetails: TextView
-    private lateinit var tvReturnDateDetails: TextView
-    private lateinit var tvNoteDetails: TextView
+    lateinit var tvNameDetails: TextView
+    lateinit var tvBorrowedDateDetails: TextView
+    lateinit var tvReturnDateDetails: TextView
+    lateinit var tvNoteDetails: TextView
     private lateinit var paidButton: Button
     private lateinit var paidIcon: ImageView
+    private lateinit var debtId: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_debt_details)
+
+        // Get the debt ID from the intent extras
+        debtId = intent.getStringExtra("debtId").toString()
 
         //---back button---
         val backButton: ImageButton = findViewById(R.id.backBtn)
@@ -46,6 +50,11 @@ class DebtDetailsActivity : AppCompatActivity() {
 
         initView()
         setValuesToViews()
+
+        //--set pay status as paid--
+        paidButton.setOnClickListener {
+            updatePayStatus("Paid")
+        }
     }
 
     private fun deleteData() {
@@ -118,6 +127,20 @@ class DebtDetailsActivity : AppCompatActivity() {
 
     }
 
+    private fun updatePayStatus(payStatus: String) {
+        val dbRef = FirebaseDatabase.getInstance().getReference("Debts").child(debtId)
+        dbRef.child("payStatus").setValue(payStatus).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Pay status updated to $payStatus", Toast.LENGTH_LONG).show()
+                tvPayStatusDetails.text = payStatus
+                paidIcon.visibility = View.VISIBLE
+                paidButton.visibility = View.GONE
+            } else {
+                Toast.makeText(this, "Failed to update pay status", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     private fun openUpdateDialog(
         debtName: String
     ){
@@ -134,6 +157,7 @@ class DebtDetailsActivity : AppCompatActivity() {
         val etReturnDate = mDialogView.findViewById<EditText>(R.id.etReturnDateUpdate)
         val etDebtNote = mDialogView.findViewById<EditText>(R.id.etDebtNoteUpdate)
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.updateButton)
+        val btnUpdateCancel = mDialogView.findViewById<Button>(R.id.updateCancelButton)
 
         etDebtAmount.setText(intent.getDoubleExtra("debtAmount", 0.0).toString())
         etDebtName.setText(intent.getStringExtra("debtName").toString())
@@ -162,6 +186,7 @@ class DebtDetailsActivity : AppCompatActivity() {
         var returnDateUpdate: Long = intent.getLongExtra("debtReturnDate", 0)
         var invertedBorrowedDate: Long = borrowedDateUpdate * -1
         var invertedReturnDate: Long = returnDateUpdate * -1
+
         etBorrowedDate.setOnClickListener {
             val year = cal.get(Calendar.YEAR) //set default year in datePickerDialog similar with database data
             val month = cal.get(Calendar.MONTH)
@@ -178,6 +203,30 @@ class DebtDetailsActivity : AppCompatActivity() {
                     val theDate = sdf.parse(selectedDate)
                     borrowedDateUpdate = theDate!!.time //convert date to millisecond
                     invertedBorrowedDate = borrowedDateUpdate * -1
+                },
+                year,
+                month,
+                day
+            )
+            dpd.show()
+        }
+
+        etReturnDate.setOnClickListener {
+            val year = cal.get(Calendar.YEAR) //set default year in datePickerDialog similar with database data
+            val month = cal.get(Calendar.MONTH)
+            val day = cal.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(this,
+                { _, selectedYear, selectedMonth, selectedDayOfMonth ->
+
+                    val selectedDate = "$selectedDayOfMonth/${selectedMonth + 1}/$selectedYear"
+                    etReturnDate.text = null
+                    etReturnDate.hint = selectedDate
+
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+                    val theDate = sdf.parse(selectedDate)
+                    returnDateUpdate = theDate!!.time //convert date to millisecond
+                    invertedReturnDate = returnDateUpdate * -1
                 },
                 year,
                 month,
@@ -221,9 +270,13 @@ class DebtDetailsActivity : AppCompatActivity() {
 
             alertDialog.dismiss()
         }
+
+        btnUpdateCancel.setOnClickListener {
+            alertDialog.dismiss() // Close the dialog
+        }
     }
 
-    private fun updateDebtData(
+    fun updateDebtData(
         debtId:String,
         debtAmount: Double,
         debtName: String,

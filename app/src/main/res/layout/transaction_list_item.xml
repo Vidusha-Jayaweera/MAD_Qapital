@@ -24,7 +24,7 @@
             android:id="@+id/typeIcon"
             android:layout_width="47dp"
             android:layout_height="47dp"
-            android:src="@mipmap/ic_launcher_debt"
+            android:src="@drawable/loan_svgrepo_com"
             android:layout_marginEnd="13dp"
             android:layout_marginStart="3dp"
             />

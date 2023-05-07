@@ -5,147 +5,170 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="530dp"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/amountTIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp">
+            android:background="@color/white">
 
-            <EditText
-                android:id="@+id/etDebtAmountUpdate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/amountTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/typeRadioGroup"
-                android:drawableLeft="@drawable/ic_baseline_attach_money_24"
-                android:drawablePadding="8dp"
-                android:ems="10"
-                android:hint="@string/edt_transaction_amount"
-                android:inputType="numberDecimal"
-                android:textColor="@color/black"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/etDebtAmountUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/typeRadioGroup"
+                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:hint="@string/edt_transaction_amount"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/titleTIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/amountTIL"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/etDebtNameUpdate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/titleTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/etDebtAmount"
-                android:drawableLeft="@drawable/ic_baseline_title_24"
-                android:drawablePadding="8dp"
-                android:ems="10"
-                android:hint="@string/edt_transaction_name"
-                android:inputType="text"
-                android:textColor="@color/black"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_below="@id/amountTIL"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/etDebtNameUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etDebtAmount"
+                    android:drawableLeft="@drawable/ic_baseline_title_24"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:hint="@string/edt_transaction_name"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/dateTIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titleTIL"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/etBorrowedDateUpdate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/categoryTIL"
-                android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
-                android:drawablePadding="8dp"
-                android:ems="10"
-                android:focusable="false"
-                android:hint=""
-                android:inputType="date"
-                android:text="@string/edt_borrowed_date"
-                android:textColor="#717171"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_below="@+id/titleTIL"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/returnDateTIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dateTIL"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp">
+                <EditText
+                    android:id="@+id/etBorrowedDateUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/categoryTIL"
+                    android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint=""
+                    android:inputType="date"
+                    android:text="@string/edt_borrowed_date"
+                    android:textColor="#717171"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etReturnDateUpdate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/returnDateTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etBorrowedDateUpdate"
-                android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
-                android:drawablePadding="8dp"
-                android:ems="10"
-                android:focusable="false"
-                android:hint=""
-                android:inputType="date"
-                android:text="@string/edt_return_date"
-                android:textColor="#717171"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_below="@+id/dateTIL"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/noteTIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/returnDateTIL"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp">
+                <EditText
+                    android:id="@+id/etReturnDateUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etBorrowedDateUpdate"
+                    android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint=""
+                    android:inputType="date"
+                    android:text="@string/edt_return_date"
+                    android:textColor="#717171"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etDebtNoteUpdate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/noteTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/etDebtAmount"
-                android:drawableLeft="@drawable/ic_baseline_notes_24"
-                android:drawablePadding="8dp"
-                android:ems="10"
-                android:hint="@string/edt_transaction_note"
-                android:inputType="textMultiLine"
-                android:textColor="@color/black"
+                android:layout_below="@+id/returnDateTIL"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp">
 
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:id="@+id/etDebtNoteUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etDebtAmount"
+                    android:drawableLeft="@drawable/ic_baseline_notes_24"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:hint="@string/edt_transaction_note"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black"
 
-        <Button
-            android:id="@+id/updateButton"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/noteTIL"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/Debts"
-            android:paddingHorizontal="30dp"
-            android:text="@string/btn_update"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:cornerRadius="20dp" />
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/noteTIL"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/Debts"
+                android:paddingHorizontal="30dp"
+                android:text="@string/btn_update"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/updateCancelButton"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/noteTIL"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#F44040"
+                android:paddingHorizontal="30dp"
+                android:text="@string/btn_update_cancel"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:cornerRadius="20dp" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -11,6 +11,7 @@
     <string name="edt_transaction_note">Enter your note here</string>
     <string name="btn_save">Save</string>
     <string name="btn_update">Update</string>
+    <string name="btn_update_cancel">Cancel</string>
     <string name="txt_debt_details">Debt Details</string>
     <string name="txt_transaction_date_details">01 January 2002</string>
     <string name="txt_transaction_type">Debt</string>

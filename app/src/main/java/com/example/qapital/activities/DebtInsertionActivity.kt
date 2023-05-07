@@ -113,12 +113,6 @@ class DebtInsertionActivity : AppCompatActivity() {
         }else{
             debtAmount = etDebtAmount.text.toString().toDouble() //convert to double type
         }
-//        if(debtBorrowedDate.isEmpty()){
-//            etDebtBorrowedDate.error = "Please enter debt borrowed date"
-//        }
-//        if(debtReturnDate.isEmpty()){
-//            etDebtReturnDate.error = "Please enter debt return date"
-//        }
 
         val debtId = dbRef.push().key!!
         //convert millis value to negative, so it can be sort as descending order
