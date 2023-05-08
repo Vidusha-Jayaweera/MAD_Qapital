@@ -6,254 +6,243 @@
     android:layout_height="match_parent"
     tools:context=".activities.ExpenseInsertionActivity">
 
-    <LinearLayout
-        android:id="@+id/toolbarLinear"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
-        android:background="#6200EE"
-        >
-
-        <Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentInsetStart="0dp"
-            android:contentInsetLeft="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp">
-
-            <ImageButton
-                android:id="@+id/backBtn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:background="@drawable/ic_baseline_clear_24"
-                android:contentDescription="@string/edt_transaction_note"
-                tools:ignore="TouchTargetSizeCheck"/>
-
-        </Toolbar>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppinsmedium"
-            android:textStyle="bold"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="0dp"
-            android:paddingTop="5dp"
-            android:text="Add\nTransaction"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
-
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarLinear"
-        >
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@drawable/back2_img">
 
             <LinearLayout
-                android:id="@+id/typeButtonGroup"
+                android:id="@+id/toolbarLinear"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="left"
-                android:orientation="horizontal">
+                android:layout_height="160dp"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/expenseButton"
-                    android:backgroundTint="#03DAC5"
+                <Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:paddingHorizontal="16dp"
-                    android:text="Expense"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp">
+
+                    <ImageButton
+                        android:id="@+id/backBtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/ic_baseline_clear_24"
+                        android:contentDescription="@string/edt_transaction_note"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </Toolbar>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:paddingTop="5dp"
+                    android:text="Add\nTransaction"
                     android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    app:cornerRadius="16dp" />
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-                <!--android:background="@drawable/radio_not_selected"-->
+            </LinearLayout>
 
-                <Button
-                    android:id="@+id/incomeButton"
-                    android:backgroundTint="@color/defaultButton"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbarLinear"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/typeButtonGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/expenseButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#03DAC5"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp"
+                        android:text="Expense"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:cornerRadius="16dp" />
+
+                    <!--android:background="@drawable/radio_not_selected"-->
+
+                    <Button
+                        android:id="@+id/incomeButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/defaultButton"
+                        android:paddingHorizontal="16dp"
+                        android:text="Income"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        app:cornerRadius="32dp" />
+
+                    <Button
+                        android:id="@+id/debtButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/defaultButton"
+                        android:paddingHorizontal="16dp"
+                        android:text="Debt"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        app:cornerRadius="16dp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/amountTIL"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/etExpenseAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/typeRadioGroup"
+                        android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Amount"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/black"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/titleTIL"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/etExpenseTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/amount"
+                        android:drawableLeft="@drawable/ic_baseline_title_24"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Title"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/categoryTIL"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/etExpenseCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Category"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dateTIL"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/etExpenseDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/categoryTIL"
+                        android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Date"
+                        android:inputType="date"
+                        android:textColor="#717171"
+                        android:textColorHint="@color/black"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/noteTIL"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:paddingHorizontal="16dp"
-                    android:text="Income"
-                    android:textColor="@color/black"
-                    android:textAllCaps="false"
-                    app:cornerRadius="32dp" />
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp">
 
-                <Button
-                    android:backgroundTint="@color/defaultButton"
-                    android:id="@+id/debtButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_weight="1"
-                    android:paddingHorizontal="16dp"
-                    android:text="Debt"
-                    android:textColor="@color/black"
-                    android:textAllCaps="false"
-                    app:cornerRadius="16dp" />
+                    <EditText
+                        android:id="@+id/etExpenseDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/amount"
+                        android:drawableLeft="@drawable/ic_baseline_notes_24"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Description"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/black"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/expenseSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#03DAC5"
+                    android:paddingHorizontal="30dp"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="20dp" />
             </LinearLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/amountTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/typeButtonGroup"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseAmount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/typeRadioGroup"
-                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Amount"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/titleTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/amountTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/amount"
-                    android:drawableLeft="@drawable/ic_baseline_title_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Title"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/categoryTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/titleTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Category"
-                    android:textColor="@color/black"
-                    android:inputType="text"
-                    tools:ignore="SpeakableTextPresentCheck"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/categoryTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/categoryTIL"
-                    android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Date"
-                    android:inputType="date"
-                    android:textColor="#717171"
-                    android:textColorHint="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/noteTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dateTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/amount"
-                    android:drawableLeft="@drawable/ic_baseline_notes_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Description"
-                    android:inputType="textMultiLine"
-                    android:textColor="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/expenseSaveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/noteTIL"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#03DAC5"
-                android:paddingHorizontal="30dp"
-                android:text="Save"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:cornerRadius="20dp" />
-
-
         </RelativeLayout>
-
     </ScrollView>
 
 </RelativeLayout>

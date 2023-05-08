@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ExpenseDetailsActivity"
-    android:background="@color/orangePrimary">
+    >
 
     <RelativeLayout
         android:id="@+id/transactionDetailsTitle"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:background="#6200EE">
+        android:background="#7575D1">
 
         <Toolbar
             android:id="@+id/toolbar"
@@ -166,9 +166,10 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/transactionDetailsTitle"
         android:layout_marginTop="0dp"
-        android:background="@color/white"
+        android:background="@drawable/back_img3"
         android:paddingHorizontal="20dp"
-        android:paddingTop="80dp">
+        android:paddingTop="80dp"
+        >
 
         <TextView
             android:id="@+id/titleInformation"

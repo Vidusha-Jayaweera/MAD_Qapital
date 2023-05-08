@@ -20,7 +20,7 @@
                 android:id="@+id/up"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#6200EE"
+                android:background="#7575D1"
                 app:layout_collapseMode="parallax">
 
                 <Toolbar
@@ -79,10 +79,11 @@
                     <ImageButton
                         android:id="@+id/exportButton"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_height="37dp"
                         android:layout_gravity="right|center_vertical"
                         android:backgroundTint="#00FFFFFF"
-                        android:src="@drawable/ic_file_export_svgrepo_com" />
+                        android:src="@drawable/ic_file_export_svgrepo_com"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
             </RelativeLayout>

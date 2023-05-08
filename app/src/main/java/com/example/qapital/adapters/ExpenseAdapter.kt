@@ -28,6 +28,9 @@ class ExpenseAdapter(private val expenseList:ArrayList<ExpenseModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentExpense = expenseList[position]
         holder.tvExpenseTitle.text = currentExpense.expenseTitle
+        holder.tvExpenseAmount.text = currentExpense.expenseAmount
+        holder.tvExpenseDate.text = currentExpense.expenseDate
+        holder.tvExpenseCategory.text = currentExpense.expenseCategory
     }
 
     override fun getItemCount(): Int {
@@ -35,6 +38,9 @@ class ExpenseAdapter(private val expenseList:ArrayList<ExpenseModel>) :
     }
     class ViewHolder(itemView:View,clickListener: onExpenseItemClickListener):RecyclerView.ViewHolder(itemView){
         val tvExpenseTitle:TextView = itemView.findViewById(R.id.tvExpenseTitle)
+        val tvExpenseAmount : TextView = itemView.findViewById(R.id.tvExpenseAmount)
+        val tvExpenseDate : TextView = itemView.findViewById(R.id.tvExpenseDate)
+        val tvExpenseCategory : TextView = itemView.findViewById((R.id.tvExpenseCategory))
         init {
             itemView.setOnClickListener {
                 clickListener.onExpenseItemClick(adapterPosition)
