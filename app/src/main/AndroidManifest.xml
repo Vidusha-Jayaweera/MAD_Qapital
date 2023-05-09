@@ -24,21 +24,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- SignInActivity -->
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
-
-        <!-- signUpActivity -->
+            android:exported="false" /> <!-- signinActivity -->
         <activity
             android:name=".signUpActivity"
-            android:exported="false" />
-
-        <!-- HomeActivity -->
+            android:exported="false" /> <!-- signUpActivity -->
         <activity
             android:name=".HomeActivity"
+            android:exported="false" /> <!-- HomeActivity -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" /> <!-- ProfileActivity -->
+        <activity
+            android:name=".EditActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
     </application>
+
 </manifest>
