@@ -1,31 +1,42 @@
 package com.example.qapital.activities
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import com.example.qapital.models.ExpenseModel
 import com.example.qapital.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_expense_insertion.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ExpenseInsertionActivity : AppCompatActivity() {
 
     private lateinit var etExpenseAmount:EditText
     private lateinit var etExpenseTitle:EditText
-    private lateinit var etExpenseCategory:EditText
+    private lateinit var etExpenseCategory:AutoCompleteTextView
     private lateinit var etExpenseDate:EditText
     private lateinit var etExpenseDescripton:EditText
     private lateinit var btnExpenseSave:Button
 
     private lateinit var dbRef:DatabaseReference
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense_insertion)
+
+        //Back button implementation
+        val backButton: ImageButton = findViewById(R.id.backBtn)
+        backButton.setOnClickListener {
+            finish()
+        }
+        //Expense categories menu dropdown
+        etExpenseCategory = findViewById(R.id.etExpenseCategory)
+        val listExpense = CategoryOptions.expenseCategory() //getting the arrayList data from CategoryOptions file
+        val expenseAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listExpense)
+        etExpenseCategory.setAdapter(expenseAdapter)
 
         etExpenseAmount = findViewById(R.id.etExpenseAmount)
         etExpenseTitle = findViewById(R.id.etExpenseTitle)
@@ -41,6 +52,8 @@ class ExpenseInsertionActivity : AppCompatActivity() {
         }
 
     }
+
+
     private fun saveExpenseData(){
         //getting values
         val expenseAmount = etExpenseAmount.text.toString()

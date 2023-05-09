@@ -4,12 +4,7 @@ import android.content.Intent
 import android.icu.util.CurrencyAmount
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.example.qapital.R
 import com.example.qapital.models.ExpenseModel
@@ -82,17 +77,25 @@ class ExpenseDetailsActivity : AppCompatActivity() {
         val inflater = layoutInflater
         val eDialogView = inflater.inflate(R.layout.activity_expense_update,null)
 
+
         eDialog.setView(eDialogView)
         val etExpenseAmount = eDialogView.findViewById<EditText>(R.id.etExpenseAmount)
         val etExpenseTitle = eDialogView.findViewById<EditText>(R.id.etExpenseTitle)
-        val etExpenseCategory = eDialogView.findViewById<EditText>(R.id.etExpenseCategory)
+        val etExpenseCategory = eDialogView.findViewById<AutoCompleteTextView>(R.id.etExpenseCategory)
         val etExpenseDate = eDialogView.findViewById<EditText>(R.id.etExpenseDate)
         val etExpenseDescription = eDialogView.findViewById<EditText>(R.id.etExpenseDescription)
         val btnExpenseUpdate = eDialogView.findViewById<Button>(R.id.expenseSaveButton)
 
+
         etExpenseAmount.setText(intent.getStringExtra("expenseAmount").toString())
         etExpenseTitle.setText(intent.getStringExtra("expenseTitle").toString())
-        etExpenseCategory.setText(intent.getStringExtra("expenseCategory").toString())
+        //set text to auto complete text view category:
+        val categoryOld = (intent.getStringExtra("expenseCategory"))
+        etExpenseCategory.setText(categoryOld)
+
+        val listExpense = CategoryOptions.expenseCategory() //getting the arrayList data from CategoryOptions file
+        val expenseAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listExpense)
+        etExpenseCategory.setAdapter(expenseAdapter)
         etExpenseDate.setText(intent.getStringExtra("expenseDate").toString())
         etExpenseDescription.setText(intent.getStringExtra("expenseDescription").toString())
         eDialog.setTitle("Updating $expenseTitle Record")

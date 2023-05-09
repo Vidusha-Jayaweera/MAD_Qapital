@@ -65,24 +65,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/categoryTIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/titleTIL"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            >
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/etExpenseCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
+                android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
                 android:drawablePadding="8dp"
-                android:ems="10"
                 android:hint="Category"
-                android:textColor="@color/black"
-                android:inputType="text"
-                tools:ignore="SpeakableTextPresentCheck"/>
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
