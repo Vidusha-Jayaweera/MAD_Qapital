@@ -24,6 +24,12 @@ class ExpenseDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense_details)
+
+        //Back button implementation
+        val backButton: ImageButton = findViewById(R.id.backBtn)
+        backButton.setOnClickListener {
+            finish()
+        }
         tvExpenseDate = findViewById(R.id.tvExpenseDateDetails)
         tvExpenseAmount= findViewById(R.id.tvExpenseAmountDetails)
         tvExpenseTitle= findViewById(R.id.tvExpenseTitleDetails)
@@ -45,22 +51,36 @@ class ExpenseDetailsActivity : AppCompatActivity() {
             )
         }
     }
-    private fun deleteRecord(
-        id:String
-    ){
+    private fun deleteRecord(id: String) {
         val dbRef = FirebaseDatabase.getInstance().getReference("Expenses").child(id)
-        val eTask = dbRef.removeValue()
 
-        eTask.addOnSuccessListener {
-            Toast.makeText(this,"Expense data deleted",Toast.LENGTH_LONG).show()
+        // Create an AlertDialog to confirm the deletion
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Confirm Deletion")
+            .setMessage("Are you sure you want to delete this expense?")
+            .setPositiveButton("Delete") { _, _ ->
+                // If the user confirms the deletion, remove the expense from the database
+                dbRef.removeValue()
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Expense data deleted", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this,ExpenseFetchingActivity::class.java)
-            finish()
-            startActivity(intent)
-        }.addOnFailureListener{error ->
-            Toast.makeText(this,"Deleting Err ${error.message}",Toast.LENGTH_LONG).show()
-        }
+                        // Start the ExpenseFetchingActivity to refresh the expense list
+                        val intent = Intent(this, ExpenseFetchingActivity::class.java)
+                        finish()
+                        startActivity(intent)
+                    }
+                    .addOnFailureListener { error ->
+                        Toast.makeText(this, "Deleting Err ${error.message}", Toast.LENGTH_LONG).show()
+                    }
+            }
+            .setNegativeButton("Cancel") { _, _ ->
+                // If the user cancels the deletion, do nothing
+            }
+            .create()
+
+        alertDialog.show()
     }
+
     private fun initView(){}
     private fun setValuesToViews(){
         tvExpenseDate.text = intent.getStringExtra("expenseDate")
