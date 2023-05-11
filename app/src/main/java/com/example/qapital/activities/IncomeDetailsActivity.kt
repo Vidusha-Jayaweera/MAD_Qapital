@@ -22,7 +22,6 @@ class IncomeDetailsActivity : AppCompatActivity() {
     private lateinit var btnUpdate:ImageButton
     private lateinit var btnDelete:ImageButton
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_details)
