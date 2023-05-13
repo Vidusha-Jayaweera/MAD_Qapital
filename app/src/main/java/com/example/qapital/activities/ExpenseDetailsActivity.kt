@@ -123,7 +123,7 @@ class ExpenseDetailsActivity : AppCompatActivity() {
         //set text to auto complete text view category:
         val categoryOld = (intent.getStringExtra("expenseCategory"))
         etExpenseCategory.setText(categoryOld)
-        val expenseId = intent.getStringExtra("expenseId") //store debt id
+        val expenseId = intent.getStringExtra("expenseId") //store expense id
         val listExpense = CategoryOptions.expenseCategory() //getting the arrayList data from CategoryOptions file
         val expenseAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listExpense)
         etExpenseCategory.setAdapter(expenseAdapter)
