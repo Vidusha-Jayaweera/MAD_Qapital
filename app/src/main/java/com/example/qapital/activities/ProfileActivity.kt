@@ -15,7 +15,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private lateinit var user_name : TextView
     private lateinit var user_email: TextView
-    private lateinit var setting_btn: Button
+    private lateinit var Edit: Button
     private lateinit var backtoHome: ImageButton
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -38,7 +38,7 @@ class ProfileActivity : AppCompatActivity() {
         user_email = findViewById(R.id.user_email)
 
         //buttons
-        setting_btn = findViewById(R.id.Edit)
+        Edit = findViewById(R.id.Edit)
         backtoHome = findViewById(R.id.backtoHome)
         incomes_btn = findViewById(R.id.incomes_btn)
         expenses_btn = findViewById(R.id.expenses_btn)
@@ -65,11 +65,13 @@ class ProfileActivity : AppCompatActivity() {
                 }
         }
 
-        setting_btn.setOnClickListener {
+        //redirect to edit page
+        Edit.setOnClickListener {
             val intent = Intent(this@ProfileActivity, EditActivity::class.java)
             startActivity(intent)
         }
 
+        //redirect to Home Page
         backtoHome.setOnClickListener(){
             val intent = Intent(this@ProfileActivity, HomeActivity::class.java)
             startActivity(intent)
