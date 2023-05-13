@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import com.example.qapital.models.IncomeModel
 import com.example.qapital.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_income_insertion.*
+import com.google.firebase.ktx.Firebase
+
 
 class IncomeInsertionActivity : AppCompatActivity() {
 
@@ -19,13 +23,18 @@ class IncomeInsertionActivity : AppCompatActivity() {
     private lateinit var etIncomeDate:EditText
     private lateinit var etIncomeNote:EditText
     private lateinit var btnIncomeSave:Button
-
+    private var incomeAmount: Double = 0.0
     private lateinit var dbRef:DatabaseReference
-
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_insertion)
+        //Back button implementation
+        val backButton: ImageButton = findViewById(R.id.backBtn)
+        backButton.setOnClickListener {
+            finish()
+        }
 
         etIncomeAmount = findViewById(R.id.etIncomeAmount)
         etIncomeTitle = findViewById(R.id.etIncomeTitle)
@@ -34,7 +43,13 @@ class IncomeInsertionActivity : AppCompatActivity() {
         etIncomeNote = findViewById(R.id.etIncomeNote)
         btnIncomeSave = findViewById(R.id.IncomeSaveButton)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Incomes")
+        //Initialize Firebase Auth and firebase database--
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            dbRef = FirebaseDatabase.getInstance().getReference(uid) //initialize database with uid as the parent
+        }
+        auth = Firebase.auth
 
         btnIncomeSave.setOnClickListener{
             saveIncomeData()
@@ -43,26 +58,29 @@ class IncomeInsertionActivity : AppCompatActivity() {
     }
     private fun saveIncomeData(){
         //getting values
-        val incomeAmount = etIncomeAmount.text.toString()
+        val incomeAmountEt = etIncomeAmount.text.toString()
         val incomeTitle = etIncomeTitle.text.toString()
         val incomeType = etIncomeType.text.toString()
         val incomeDate = etIncomeDate.text.toString()
         val incomeNote = etIncomeNote.text.toString()
 
-        if(incomeAmount.isEmpty()){
+        if(incomeAmountEt.isEmpty()){
             etIncomeAmount.error = "Please enter amount"
         }
-        if(incomeTitle.isEmpty()){
+        else if(incomeTitle.isEmpty()){
             etIncomeTitle.error = "Please enter title"
         }
-        if(incomeType.isEmpty()){
+        else if(incomeType.isEmpty()){
             etIncomeType.error = "Please enter category"
         }
-        if(incomeDate.isEmpty()){
+        else if(incomeDate.isEmpty()){
             etIncomeDate.error = "Please enter date"
         }
-        if(incomeNote.isEmpty()){
+        else if(incomeNote.isEmpty()){
             etIncomeNote.error = "Please enter description"
+        }
+        else{
+            incomeAmount = etIncomeAmount.text.toString().toDouble() //convert to double type
         }
         val incomeId = dbRef.push().key!!
 

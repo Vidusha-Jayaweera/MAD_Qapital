@@ -62,11 +62,11 @@
             android:layout_marginTop="1dp"
             android:layout_marginEnd="31dp"
             android:fontFamily="@font/poppinsmedium"
-            android:text="@string/txt_expense_details"
+            android:text="Income Details"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="28sp"
             android:textStyle="bold"
-            tools:text="@string/detail" />
+             />
 
     </RelativeLayout>
 
@@ -123,7 +123,7 @@
                 android:text="Income"
                 android:textColor="#474747"
                 android:textSize="15sp"
-                tools:text="@string/income" />
+                 />
 
             <TextView
                 android:id="@+id/amountTitle"

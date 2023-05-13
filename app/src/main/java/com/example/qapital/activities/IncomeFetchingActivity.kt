@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.qapital.R
 import com.example.qapital.adapters.IncomeAdapter
 import com.example.qapital.models.IncomeModel
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 
 class IncomeFetchingActivity : AppCompatActivity() {
 
@@ -18,7 +20,7 @@ class IncomeFetchingActivity : AppCompatActivity() {
     private lateinit var tvIncomeLoadingData: TextView
     private lateinit var incomeList:ArrayList<IncomeModel>
     private lateinit var dbRef: DatabaseReference
-
+    private val user = Firebase.auth.currentUser
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_fetching)
@@ -36,8 +38,10 @@ class IncomeFetchingActivity : AppCompatActivity() {
     private fun getIncomesData(){
         incomeRecyclerView.visibility = View.GONE
         tvIncomeLoadingData.visibility = View.VISIBLE
-
-        dbRef = FirebaseDatabase.getInstance().getReference("Incomes")
+        val uid = user?.uid //get user id from database
+        if (uid != null) {
+            dbRef = FirebaseDatabase.getInstance().getReference(uid)
+        }
         dbRef.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 incomeList.clear()

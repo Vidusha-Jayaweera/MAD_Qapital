@@ -2,7 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
-    id 'kotlin-android-extensions'
+
+
 }
 
 android {
@@ -39,24 +40,33 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.firebase:firebase-database-ktx:20.2.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
-    implementation 'junit:junit:4.12'
+
+    implementation 'com.google.firebase:firebase-database:20.2.1'
+    implementation 'com.google.firebase:firebase-firestore:24.6.0'
+    implementation 'com.google.firebase:firebase-auth:22.0.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:3.12.4'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation platform('com.google.firebase:firebase-bom:31.5.0')
-    implementation 'com.google.firebase:firebase-database-ktx'
 
-//Shimmer Effect Dependencies
+
+
+    //Shimmer Effect Dependencies
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+
+    implementation files('libs\\poi-3.7.jar')
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+
+    // Kotlin dependencies
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
 }
