@@ -80,8 +80,6 @@ class DebtInsertionActivity : AppCompatActivity() {
         etDebtReturnDate = findViewById(R.id.etDebtReturnDate)
         etDebtNote = findViewById(R.id.etDebtNote)
         btnDebtInsertData = findViewById(R.id.saveButton)
-
-        dbRef = FirebaseDatabase.getInstance().getReference("Debts")
     }
 
     fun clickDatePicker(editText: EditText) {
@@ -135,17 +133,7 @@ class DebtInsertionActivity : AppCompatActivity() {
         dbRef.child(debtId).setValue(debt)
             .addOnCompleteListener {
                 Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
-
-                etDebtAmount.text.clear()
-                etDebtName.text.clear()
-                etDebtNote.text.clear()
-
-                etDebtBorrowedDate.text.clear()
-                etDebtBorrowedDate.hint = "Borrowed date"
-
-                etDebtReturnDate.text.clear()
-                etDebtReturnDate.hint = "Return date"
-
+                finish()
             }.addOnFailureListener{ err ->
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }

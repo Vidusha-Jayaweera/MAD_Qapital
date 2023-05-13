@@ -60,12 +60,9 @@ class HomeActivity : AppCompatActivity() {
 
         fetchAmount()
 
-        // Get the current user's ID
-        val userId = auth.currentUser?.uid
-
         // Retrieve the user's name from Firebase
-        if (userId != null) {
-            db.collection("users").document(userId)
+        if (uid != null) {
+            db.collection("users").document(uid)
                 .get()
                 .addOnSuccessListener { document ->
                     val userName = document.getString("name")
@@ -84,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         floatingActionBtn.setOnClickListener{
-            val intent = Intent(this@HomeActivity, DebtInsertionActivity::class.java)
+            val intent = Intent(this@HomeActivity, DebtListActivity::class.java)
             startActivity(intent)
         }
 
@@ -128,6 +125,8 @@ class HomeActivity : AppCompatActivity() {
                         debtList.add(debtData!!)
                     }
                 }
+
+                amountDebtTemp = 0.0
 
                 //take all amount expense, income and debts:
                 for ((i) in debtList.withIndex()){

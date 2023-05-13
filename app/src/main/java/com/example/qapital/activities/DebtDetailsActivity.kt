@@ -137,7 +137,7 @@ class DebtDetailsActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
         val uid = user?.uid
         if (uid != null) {
-            val dbRef = FirebaseDatabase.getInstance().getReference(uid).child(debtId)
+            val dbRef = FirebaseDatabase.getInstance().getReference(uid)
             dbRef.child("payStatus").setValue(payStatus).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Pay status updated to $payStatus", Toast.LENGTH_LONG)
