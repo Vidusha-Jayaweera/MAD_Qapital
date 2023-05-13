@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.example.qapital.R
 import com.example.qapital.models.DebtModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
@@ -23,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var GoUserProfileBtn: ImageButton
     private lateinit var GreatingText: TextView
     private lateinit var UserName: TextView
+    private lateinit var floatingActionBtn : FloatingActionButton
 
     //firestrore connections
     private var auth: FirebaseAuth = Firebase.auth
@@ -31,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
 
     private var user = Firebase.auth.currentUser
     private val uid = user?.uid //get user id from database
-    private var dbRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("Debts")
+    private var dbRef: DatabaseReference = FirebaseDatabase.getInstance().getReference(uid!!)
 
     //initialize var for storing amount value from db
     var allTimeExpense: Double = 0.0
@@ -49,6 +52,7 @@ class HomeActivity : AppCompatActivity() {
 
         // Initialize button
         GoUserProfileBtn = findViewById(R.id.GoUserProfileBtn)
+        floatingActionBtn = findViewById(R.id.floatingActionButton)
 
         // Initialize TextView
         GreatingText = findViewById(R.id.GreatingText)
@@ -76,6 +80,11 @@ class HomeActivity : AppCompatActivity() {
         GoUserProfileBtn.setOnClickListener {
             // Redirect to ProfileActivity
             val intent = Intent(this@HomeActivity, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        floatingActionBtn.setOnClickListener{
+            val intent = Intent(this@HomeActivity, DebtInsertionActivity::class.java)
             startActivity(intent)
         }
 

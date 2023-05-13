@@ -12,7 +12,9 @@ import com.example.qapital.R
 import com.example.qapital.adapters.DebtAdapter
 import com.example.qapital.models.DebtModel
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,6 +29,7 @@ class DebtListActivity : AppCompatActivity() {
     private lateinit var noDataImage: ImageView
     private lateinit var tvNoDataTitle: TextView
     private lateinit var dbRef: DatabaseReference
+    private val user = Firebase.auth.currentUser
     private var selectedType: String = "All Type"
     private lateinit var typeOption: Spinner
     private lateinit var exportButton: ImageButton
@@ -89,7 +92,10 @@ class DebtListActivity : AppCompatActivity() {
         noDataImage.visibility = View.GONE
         tvNoDataTitle.visibility = View.GONE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Debts")
+        val uid = user?.uid //get user id from database
+        if (uid != null) {
+            dbRef = FirebaseDatabase.getInstance().getReference(uid)
+        }
 
         val query: Query = dbRef.orderByChild("invertedBorrowedDate") //sorting date descending
         query.addValueEventListener(object : ValueEventListener {

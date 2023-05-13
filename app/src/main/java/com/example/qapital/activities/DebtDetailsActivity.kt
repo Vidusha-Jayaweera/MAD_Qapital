@@ -9,7 +9,9 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.example.qapital.R
 import com.example.qapital.models.DebtModel
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,13 +34,13 @@ class DebtDetailsActivity : AppCompatActivity() {
         // Get the debt ID from the intent extras
         debtId = intent.getStringExtra("debtId").toString()
 
-        //---back button---
+        //back button
         val backButton: ImageButton = findViewById(R.id.backBtn)
         backButton.setOnClickListener {
             finish()
         }
 
-        //--update data--
+        //update data
         val updateDebt: ImageButton = findViewById(R.id.btnUpdateDebt)
         updateDebt.setOnClickListener {
             openUpdateDialog(
@@ -51,7 +53,7 @@ class DebtDetailsActivity : AppCompatActivity() {
         initView()
         setValuesToViews()
 
-        //--set pay status as paid--
+        //set pay status as paid
         paidButton.setOnClickListener {
             updatePayStatus("Paid")
         }
@@ -74,8 +76,11 @@ class DebtDetailsActivity : AppCompatActivity() {
     }
 
     private fun deleteRecord(debtId: String) {
-
-            val dbRef = FirebaseDatabase.getInstance().getReference("Debts").child(debtId) //initialize database with uid as the parent
+        //Initialize Firebase Auth and firebase database
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            val dbRef = FirebaseDatabase.getInstance().getReference(uid).child(debtId) //initialize database with uid as the parent
             val mTask = dbRef.removeValue()
 
             mTask.addOnSuccessListener {
@@ -84,6 +89,7 @@ class DebtDetailsActivity : AppCompatActivity() {
             }.addOnFailureListener { error ->
                 Toast.makeText(this, "Deleting Err ${error.message}", Toast.LENGTH_LONG).show()
             }
+        }
     }
 
     private fun initView() { //initialized ui item id
@@ -128,15 +134,20 @@ class DebtDetailsActivity : AppCompatActivity() {
     }
 
     private fun updatePayStatus(payStatus: String) {
-        val dbRef = FirebaseDatabase.getInstance().getReference("Debts").child(debtId)
-        dbRef.child("payStatus").setValue(payStatus).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(this, "Pay status updated to $payStatus", Toast.LENGTH_LONG).show()
-                tvPayStatusDetails.text = payStatus
-                paidIcon.visibility = View.VISIBLE
-                paidButton.visibility = View.GONE
-            } else {
-                Toast.makeText(this, "Failed to update pay status", Toast.LENGTH_LONG).show()
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            val dbRef = FirebaseDatabase.getInstance().getReference(uid).child(debtId)
+            dbRef.child("payStatus").setValue(payStatus).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Pay status updated to $payStatus", Toast.LENGTH_LONG)
+                        .show()
+                    tvPayStatusDetails.text = payStatus
+                    paidIcon.visibility = View.VISIBLE
+                    paidButton.visibility = View.GONE
+                } else {
+                    Toast.makeText(this, "Failed to update pay status", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
@@ -286,8 +297,13 @@ class DebtDetailsActivity : AppCompatActivity() {
         invertedBorrowedDate: Long,
         invertedReturnDate: Long
     ){
-            val dbRef = FirebaseDatabase.getInstance().getReference("Debts") //initialize database with uid as the parent
+        //Initialize Firebase Auth and firebase database
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            val dbRef = FirebaseDatabase.getInstance().getReference(uid) //initialize database with uid as the parent
             val debtInfo = DebtModel(debtId, debtAmount, debtName, debtBorrowedDate, debtReturnDate, debtNote, invertedBorrowedDate, invertedReturnDate)
             dbRef.child(debtId).setValue(debtInfo)
         }
+    }
 }

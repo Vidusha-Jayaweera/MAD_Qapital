@@ -9,8 +9,11 @@ import android.widget.ImageButton
 import android.widget.Toast
 import com.example.qapital.R
 import com.example.qapital.models.DebtModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,18 +34,27 @@ class DebtInsertionActivity : AppCompatActivity() {
     private var payStatus: String = "Not paid"
 
     private lateinit var dbRef: DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_debt_insertion)
 
-        //---back button---
+        //back button
         val backButton: ImageButton = findViewById(R.id.backBtn)
         backButton.setOnClickListener {
             finish()
         }
 
         initItem()
+
+        //Initialize Firebase Auth and firebase database--
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            dbRef = FirebaseDatabase.getInstance().getReference(uid) //initialize database with uid as the parent
+        }
+        auth = Firebase.auth
 
         //date picker
         val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
