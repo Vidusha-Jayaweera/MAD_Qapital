@@ -128,6 +128,7 @@ class HomeActivity : AppCompatActivity() {
                         expenseList.add(expenseData!!)
                     }
                 }
+                amountExpenseTemp = 0.0
 
                 //take all amount expense, income and debts:
                 for ((i) in expenseList.withIndex()){
