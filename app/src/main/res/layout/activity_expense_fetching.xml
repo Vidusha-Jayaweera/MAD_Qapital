@@ -132,14 +132,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
-                    <include layout="@layout/shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
+                    <include layout="@layout/expense_shimmer_placeholder_layout" />
 
                 </LinearLayout>
 

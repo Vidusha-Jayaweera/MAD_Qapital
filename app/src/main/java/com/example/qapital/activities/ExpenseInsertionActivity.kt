@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.widget.*
 import com.example.qapital.models.ExpenseModel
 import com.example.qapital.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_expense_insertion.*
+import com.google.firebase.ktx.Firebase
+
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -18,10 +21,13 @@ class ExpenseInsertionActivity : AppCompatActivity() {
     private lateinit var etExpenseTitle:EditText
     private lateinit var etExpenseCategory:AutoCompleteTextView
     private lateinit var etExpenseDate:EditText
-    private lateinit var etExpenseDescripton:EditText
+    private lateinit var etExpenseDescription:EditText
     private lateinit var btnExpenseSave:Button
+    private var expenseAmount: Double = 0.0
 
     private lateinit var dbRef:DatabaseReference
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +48,18 @@ class ExpenseInsertionActivity : AppCompatActivity() {
         etExpenseTitle = findViewById(R.id.etExpenseTitle)
         etExpenseCategory = findViewById(R.id.etExpenseCategory)
         etExpenseDate = findViewById(R.id.etExpenseDate)
-        etExpenseDescripton = findViewById(R.id.etExpenseDescription)
+        etExpenseDescription = findViewById(R.id.etExpenseDescription)
         btnExpenseSave = findViewById(R.id.expenseSaveButton)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Expenses")
+        //Initialize Firebase Auth and firebase database--
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            dbRef = FirebaseDatabase.getInstance().getReference(uid) //initialize database with uid as the parent
+        }
+        auth = Firebase.auth
+
+
 
         btnExpenseSave.setOnClickListener{
             saveExpenseData()
@@ -56,26 +70,29 @@ class ExpenseInsertionActivity : AppCompatActivity() {
 
     private fun saveExpenseData(){
         //getting values
-        val expenseAmount = etExpenseAmount.text.toString()
+        val expenseAmountEt = etExpenseAmount.text.toString()
         val expenseTitle = etExpenseTitle.text.toString()
         val expenseCategory = etExpenseCategory.text.toString()
         val expenseDate = etExpenseDate.text.toString()
         val expenseDescription = etExpenseDescription.text.toString()
 
-        if(expenseAmount.isEmpty()){
+        if(expenseAmountEt.isEmpty()){
             etExpenseAmount.error = "Please enter amount"
         }
-        if(expenseTitle.isEmpty()){
+        else if(expenseTitle.isEmpty()){
             etExpenseTitle.error = "Please enter title"
         }
-        if(expenseCategory.isEmpty()){
+        else if(expenseCategory.isEmpty()){
             etExpenseCategory.error = "Please enter category"
         }
-        if(expenseDate.isEmpty()){
+        else if(expenseDate.isEmpty()){
             etExpenseDate.error = "Please enter date"
         }
-        if(expenseDescription.isEmpty()){
-            etExpenseDescripton.error = "Please enter description"
+        else if(expenseDescription.isEmpty()){
+            etExpenseDescription.error = "Please enter description"
+        }
+        else{
+            expenseAmount = etExpenseAmount.text.toString().toDouble() //convert to double type
         }
         val expenseId = dbRef.push().key!!
 
@@ -89,7 +106,7 @@ class ExpenseInsertionActivity : AppCompatActivity() {
                 etExpenseTitle.text.clear()
                 etExpenseCategory.text.clear()
                 etExpenseDate.text.clear()
-                etExpenseDescripton.text.clear()
+                etExpenseDescription.text.clear()
 
 
             }.addOnFailureListener{err->

@@ -16,51 +16,51 @@
 
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/amountTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amountTIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/etExpenseAmount"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseAmount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/typeRadioGroup"
-                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Amount"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/typeRadioGroup"
+                android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:hint="Amount"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/titleTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/titleTIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/amountTIL"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/etExpenseTitle"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/amountTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
-
-                <EditText
-                    android:id="@+id/etExpenseTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/amount"
-                    android:drawableLeft="@drawable/ic_baseline_title_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Title"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:drawableLeft="@drawable/ic_baseline_title_24"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:hint="Title"
+                android:inputType="text"
+                android:textColor="@color/black"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -83,70 +83,70 @@
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateTIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/categoryTIL"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/etExpenseDate"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/categoryTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/categoryTIL"
+                android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="date"
+                android:textColor="#717171"
+                android:textColorHint="@color/black"
+                tools:ignore="SpeakableTextPresentCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/etExpenseDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/categoryTIL"
-                    android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Date"
-                    android:inputType="date"
-                    android:textColor="#717171"
-                    android:textColorHint="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck"/>
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/noteTIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dateTIL"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/noteTIL"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/etExpenseDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/dateTIL"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp">
+                android:drawableLeft="@drawable/ic_baseline_notes_24"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/etExpenseDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/amount"
-                    android:drawableLeft="@drawable/ic_baseline_notes_24"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Description"
-                    android:inputType="textMultiLine"
-                    android:textColor="@color/black"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/expenseSaveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/noteTIL"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#03DAC5"
-                android:paddingHorizontal="30dp"
-                android:text="Update"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:cornerRadius="20dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/expenseSaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/noteTIL"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#03DAC5"
+            android:paddingHorizontal="30dp"
+            android:text="Update"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="20dp" />
 
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

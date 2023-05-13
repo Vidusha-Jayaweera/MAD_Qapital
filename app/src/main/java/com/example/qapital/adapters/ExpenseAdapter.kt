@@ -28,7 +28,7 @@ class ExpenseAdapter(private val expenseList:ArrayList<ExpenseModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentExpense = expenseList[position]
         holder.tvExpenseTitle.text = currentExpense.expenseTitle
-        holder.tvExpenseAmount.text = currentExpense.expenseAmount
+        holder.tvExpenseAmount.text = currentExpense.expenseAmount.toString()
         holder.tvExpenseDate.text = currentExpense.expenseDate
         holder.tvExpenseCategory.text = currentExpense.expenseCategory
     }

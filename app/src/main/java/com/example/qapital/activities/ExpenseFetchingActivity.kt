@@ -10,14 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.qapital.R
 import com.example.qapital.adapters.ExpenseAdapter
 import com.example.qapital.models.ExpenseModel
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 
 class ExpenseFetchingActivity : AppCompatActivity() {
 
     private lateinit var expenseRecyclerView: RecyclerView
     private lateinit var expenseList:ArrayList<ExpenseModel>
     private lateinit var dbRef: DatabaseReference
-
+    private val user = Firebase.auth.currentUser
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense_fetching)
@@ -33,8 +35,11 @@ class ExpenseFetchingActivity : AppCompatActivity() {
 
     private fun getExpensesData(){
         expenseRecyclerView.visibility = View.GONE
+        val uid = user?.uid //get user id from database
+        if (uid != null) {
+            dbRef = FirebaseDatabase.getInstance().getReference(uid)
+        }
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Expenses")
         dbRef.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 expenseList.clear()

@@ -8,8 +8,10 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.example.qapital.R
 import com.example.qapital.models.ExpenseModel
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_expense_details.*
+import com.google.firebase.ktx.Firebase
+
 
 class ExpenseDetailsActivity : AppCompatActivity() {
     private lateinit var tvExpenseDate:TextView
@@ -19,12 +21,14 @@ class ExpenseDetailsActivity : AppCompatActivity() {
     private lateinit var tvExpenseNote:TextView
     private lateinit var btnUpdate:ImageButton
     private lateinit var btnDelete:ImageButton
+    private lateinit var expenseId: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense_details)
-
+        // Get the expenseID from the intent extras
+        expenseId = intent.getStringExtra("expenseId").toString()
         //Back button implementation
         val backButton: ImageButton = findViewById(R.id.backBtn)
         backButton.setOnClickListener {
@@ -52,39 +56,46 @@ class ExpenseDetailsActivity : AppCompatActivity() {
         }
     }
     private fun deleteRecord(id: String) {
-        val dbRef = FirebaseDatabase.getInstance().getReference("Expenses").child(id)
+        //Initialize Firebase Auth and firebase database
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            // Create an AlertDialog to confirm the deletion
+            val alertDialog = AlertDialog.Builder(this)
+                .setTitle("Confirm Deletion")
+                .setMessage("Are you sure you want to delete this expense?")
+                .setPositiveButton("Delete") { _, _ ->
+                    // If the user confirms the deletion, remove the expense from the database
+                    val dbRef = FirebaseDatabase.getInstance().getReference(uid).child(expenseId) //initialize database with uid as the parent
+                    val eTask = dbRef.removeValue()
+                        eTask.addOnSuccessListener {
+                            Toast.makeText(this, "Expense data deleted", Toast.LENGTH_LONG).show()
 
-        // Create an AlertDialog to confirm the deletion
-        val alertDialog = AlertDialog.Builder(this)
-            .setTitle("Confirm Deletion")
-            .setMessage("Are you sure you want to delete this expense?")
-            .setPositiveButton("Delete") { _, _ ->
-                // If the user confirms the deletion, remove the expense from the database
-                dbRef.removeValue()
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Expense data deleted", Toast.LENGTH_LONG).show()
+                            // Start the ExpenseFetchingActivity to refresh the expense list
+                            val intent = Intent(this, ExpenseFetchingActivity::class.java)
+                            finish()
+                            startActivity(intent)
+                        }
+                        .addOnFailureListener { error ->
+                            Toast.makeText(this, "Deleting Err ${error.message}", Toast.LENGTH_LONG)
+                                .show()
+                        }
+                }
 
-                        // Start the ExpenseFetchingActivity to refresh the expense list
-                        val intent = Intent(this, ExpenseFetchingActivity::class.java)
-                        finish()
-                        startActivity(intent)
-                    }
-                    .addOnFailureListener { error ->
-                        Toast.makeText(this, "Deleting Err ${error.message}", Toast.LENGTH_LONG).show()
-                    }
-            }
-            .setNegativeButton("Cancel") { _, _ ->
-                // If the user cancels the deletion, do nothing
-            }
-            .create()
+                .setNegativeButton("Cancel") { _, _ ->
+                    // If the user cancels the deletion, do nothing
+                }
+                .create()
 
-        alertDialog.show()
+            alertDialog.show()
+        }
     }
 
     private fun initView(){}
     private fun setValuesToViews(){
         tvExpenseDate.text = intent.getStringExtra("expenseDate")
-        tvExpenseAmount.text = intent.getStringExtra("expenseAmount")
+        val expenseAmount: Double = intent.getDoubleExtra("expenseAmount", 0.0)
+        tvExpenseAmount.text = expenseAmount.toString()
         tvExpenseCategory.text = intent.getStringExtra("expenseCategory")
         tvExpenseTitle.text = intent.getStringExtra("expenseTitle")
         tvExpenseNote.text = intent.getStringExtra("expenseDescription")
@@ -107,12 +118,12 @@ class ExpenseDetailsActivity : AppCompatActivity() {
         val btnExpenseUpdate = eDialogView.findViewById<Button>(R.id.expenseSaveButton)
 
 
-        etExpenseAmount.setText(intent.getStringExtra("expenseAmount").toString())
+        etExpenseAmount.setText(intent.getDoubleExtra("expenseAmount", 0.0).toString())
         etExpenseTitle.setText(intent.getStringExtra("expenseTitle").toString())
         //set text to auto complete text view category:
         val categoryOld = (intent.getStringExtra("expenseCategory"))
         etExpenseCategory.setText(categoryOld)
-
+        val expenseId = intent.getStringExtra("expenseId") //store debt id
         val listExpense = CategoryOptions.expenseCategory() //getting the arrayList data from CategoryOptions file
         val expenseAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listExpense)
         etExpenseCategory.setAdapter(expenseAdapter)
@@ -125,8 +136,8 @@ class ExpenseDetailsActivity : AppCompatActivity() {
 
         btnExpenseUpdate.setOnClickListener {
             updateExpenseData(
-                expenseId,
-                etExpenseAmount.text.toString(),
+                expenseId.toString(),
+                etExpenseAmount.text.toString().toDouble(),
                 etExpenseTitle.text.toString(),
                 etExpenseCategory.text.toString(),
                 etExpenseDate.text.toString(),
@@ -145,15 +156,20 @@ class ExpenseDetailsActivity : AppCompatActivity() {
     }
     private fun updateExpenseData(
         id:String,
-        amount: String,
+        amount: Double,
         title:String,
         category:String,
         date:String,
         description:String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("Expenses").child(id)
-        val expenseInfo = ExpenseModel(id,amount,title,category,date,description)
-        dbRef.setValue(expenseInfo)
+        //Initialize Firebase Auth and firebase database
+        val user = Firebase.auth.currentUser
+        val uid = user?.uid
+        if (uid != null) {
+            val dbRef = FirebaseDatabase.getInstance().getReference(uid) //initialize database with uid as the parent
+            val expenseInfo = ExpenseModel(id,amount,title,category,date,description)
+            dbRef.child(expenseId).setValue(expenseInfo)
+        }
     }
 
 }
